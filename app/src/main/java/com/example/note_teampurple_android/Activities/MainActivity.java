@@ -1,8 +1,10 @@
-package com.example.note_teampurple_android;
+package com.example.note_teampurple_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.note_teampurple_android.R;
 
 public class MainActivity extends AppCompatActivity {
 
