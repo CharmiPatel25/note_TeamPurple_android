@@ -1,17 +1,28 @@
 package com.example.note_teampurple_android.Activities;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,16 +30,23 @@ import com.example.note_teampurple_android.Adapter.HomeAdapter;
 import com.example.note_teampurple_android.Adapter.NavigationAdapter;
 import com.example.note_teampurple_android.R;
 import com.example.note_teampurple_android.database.AppDatabase;
+import com.example.note_teampurple_android.database.AppExecutors;
 import com.example.note_teampurple_android.models.UserData;
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.yavski.fabspeeddial.FabSpeedDial;
+import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
+import io.opencensus.stats.ViewData;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     HomeAdapter homeAdapter;
     LinearLayoutManager layoutManager;
@@ -60,6 +78,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.fab_add)
     FabSpeedDial fabAdd;
 
+    static int cattitle = 0;
+    String cattext = "";
+
+    String movetext = "";
+
+    ArrayList<UserData> notesarray;
+    ArrayList<UserData> categoryarray;
+    ArrayList<String> catcompare;
+    ItemTouchHelper itemTouchHelper;
+    int defaultposition=-1;
 
 
     @Override
@@ -67,6 +95,98 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        userData = new UserData();
+        mDb = AppDatabase.getInstance(getApplicationContext());
+        getcurrentdate();
+        imgSort.setOnClickListener(this);
+        edtSearchnote.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
+
+        dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        MainActivity.this.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(false);
+
+
+        notesarray = new ArrayList<UserData>();
+        catcompare = new ArrayList<String>();
+        categoryarray = new ArrayList<UserData>();
+        FabSpeedDial fabSpeedDial = (FabSpeedDial) findViewById(R.id.fab_add);
+        fabSpeedDial.setMenuListener(new SimpleMenuListenerAdapter() {
+            @Override
+            public boolean onMenuItemSelected(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.faboptions_addnote:
+
+                        boolean move = false;
+
+                        try {
+                            String cat = user.get(cattitle).getCategory();
+                            move = true;
+                        } catch (Exception e) {
+                            move = false;
+                        }
+
+                        if (!move) {
+                            displayAlert(MainActivity.this, "Please add a category for the new  note!");
+                        } else {
+                            intent = new Intent(MainActivity.this, WriteNoteActivity.class);
+                            intent.putExtra("category", cattext);
+                            intent.putExtra("categoryposition", cattitle);
+                            startActivity(intent);
+                        }
+                        return true;
+
+
+                    case R.id.faboptions_deletedata:
+                        //Toast.makeText(MainActivity.this, "Clean Database", Toast.LENGTH_LONG).show();
+                        //  deletedata();
+                        break;
+
+                    case R.id.faboptions_viewdatabase:
+                        // Toast.makeText(MainActivity.this, "View Database", Toast.LENGTH_LONG).show();
+                        intent = new Intent(MainActivity.this, ViewData.class);
+                        startActivity(intent);
+                        break;
+
+                    case R.id.faboptions_setting:
+                        Toast.makeText(MainActivity.this, "setting note", Toast.LENGTH_LONG).show();
+                        break;
+                }
+                return false;
+            }
+        });
+
+        retrieveTasks();
+
+    }
+
+    private void filter(String toString) {
+
+    }
+
+    private void displayAlert(MainActivity mainActivity, String s) {
+
+    }
+
+    private void retrieveTasks() {
+
     }
 
     @Override
@@ -79,11 +199,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.img_sort:
-
-
-
+                sort();
                 break;
         }
+    }
+
+    private void sort() {
+
     }
 
     public void showdialog() {
@@ -111,10 +233,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 MainActivity.this.getWindow().setSoftInputMode(
                         WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                 dialog.dismiss();
-
+                addcategory();
             }
         });
 
         dialog.show();
     }
+
+    private void addcategory() {
+
+    }
+
+    public String getcurrentdate()
+    {
+        Date c = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + c);
+        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy");
+        String formattedDate = df.format(c);
+        System.out.println("  "+formattedDate);
+        return formattedDate;
+    }
+
 }

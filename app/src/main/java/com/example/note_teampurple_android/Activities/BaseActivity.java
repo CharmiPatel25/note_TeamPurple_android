@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.note_teampurple_android.R;
+import com.example.note_teampurple_android.models.UserData;
 
 public class BaseActivity extends AppCompatActivity {
     Dialog Alert;
@@ -56,5 +57,9 @@ public class BaseActivity extends AppCompatActivity {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public void movedialog(UserData userData, boolean b) {
+
     }
 }
