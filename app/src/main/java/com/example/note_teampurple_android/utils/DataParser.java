@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DataParser {
-    
+
     private HashMap<String, String> getPlace(JSONObject googlePlaceJson) {
         HashMap<String, String> googlePlaceMap = new HashMap<>();
         String placeName = "-NA-";
