@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class GetDirectionsData extends AsyncTask<Object, String, String> {
-
     String googleDirectionsData;
     GoogleMap mMap;
     String url;
@@ -25,7 +24,6 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
     LatLng latLng;
     public GetDirectionsData(Context context) {
     }
-
     @Override
     protected String doInBackground(Object... objects) {
         mMap = (GoogleMap) objects[0];
@@ -56,9 +54,7 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
                 .title("Duration : " + duration)
                 .snippet("Distance : " + distance);
         mMap.addMarker(markerOptions);
-
         /*---------------------------------*/
-
         if (Userlocation.directionRequested) {
             String[] directionsList;
             DataParser parser = new DataParser();
@@ -67,7 +63,6 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
             displayDirections(directionsList);
         }
     }
-
     private void displayDirections(String[] directionsList) {
         int count = directionsList.length;
         for (int i = 0; i < count; i++) {
@@ -78,6 +73,4 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
             mMap.addPolyline(options);
         }
     }
-
-
 }
