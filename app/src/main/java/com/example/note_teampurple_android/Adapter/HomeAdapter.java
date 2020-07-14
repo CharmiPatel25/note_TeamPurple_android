@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.note_teampurple_android.Activities.MainActivity;
+import com.example.note_teampurple_android.Activities.WriteNoteActivity;
 import com.example.note_teampurple_android.R;
 import com.example.note_teampurple_android.models.UserData;
 
@@ -47,7 +48,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(context, Writenote.class);
+                Intent intent = new Intent(context, WriteNoteActivity.class);
                 intent.putExtra("notedata", notesarray.get(position));
                 context.startActivity(intent);
             }
