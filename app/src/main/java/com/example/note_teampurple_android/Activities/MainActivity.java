@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
@@ -289,6 +290,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             myRecyclerView.setHasFixedSize(true);
             myRecyclerView.setItemAnimator(new DefaultItemAnimator());
             myRecyclerView.setAdapter(homeAdapter);
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finishAffinity();
+        } else {
+            Toast.makeText(this, "Press Back to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
         }
     }
 
