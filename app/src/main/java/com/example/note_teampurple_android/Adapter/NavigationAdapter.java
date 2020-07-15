@@ -57,7 +57,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<com.example.note_tea
 
         try
         {
-            holder.txt_datenav.setText(user.get(position).getDateData());
+            holder.txt_datenav.setText(user.get(position).getDatedata());
         }
         catch (Exception e)
         {

@@ -82,11 +82,11 @@ public class UserData implements Parcelable
         this.subTitle = subTitle;
     }
 
-    public String getAudioData() {
+    public String getAudiodata() {
         return audiodata;
     }
 
-    public void setAudioData(String audioData) {
+    public void setAudiodata(String audioData) {
         this.audiodata = audioData;
     }
 
@@ -106,11 +106,11 @@ public class UserData implements Parcelable
         this.lng = lng;
     }
 
-    public String getImageData() {
+    public String getImagedata() {
         return imagedata;
     }
 
-    public void setImageData(String imageData) {
+    public void setImagedata(String imageData) {
         this.imagedata = imageData;
     }
 
@@ -122,11 +122,11 @@ public class UserData implements Parcelable
         this.category = category;
     }
 
-    public String getDateData() {
+    public String getDatedata() {
         return datedata;
     }
 
-    public void setDateData(String dateData) {
+    public void setDatedata(String dateData) {
         this.datedata = dateData;
     }
 

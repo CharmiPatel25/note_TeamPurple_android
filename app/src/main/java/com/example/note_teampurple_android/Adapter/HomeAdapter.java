@@ -39,10 +39,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.txt_notetitle.setText(notesarray.get(position).getTitle().toString());
         holder.txt_subtitle.setText(notesarray.get(position).getSubTitle().toString());
-        holder.txt_datehome.setText(notesarray.get(position).getDateData().toString());
+        holder.txt_datehome.setText(notesarray.get(position).getDatedata().toString());
 
         holder.card_view_note.setOnClickListener(new View.OnClickListener() {
             @Override

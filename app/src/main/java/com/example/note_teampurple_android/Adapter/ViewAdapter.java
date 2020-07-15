@@ -37,8 +37,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder>
         holder.txt_iddata.setText(""+user.get(position).id);
         holder.txt_titledata.setText(user.get(position).getTitle());
         holder.txt_notedata.setText(user.get(position).getSubTitle());
-        holder.txt_auddata.setText(user.get(position).getAudioData());
-        holder.txt_imgdata.setText(user.get(position).getImageData());
+        holder.txt_auddata.setText(user.get(position).getAudiodata());
+        holder.txt_imgdata.setText(user.get(position).getImagedata());
         holder.txt_latdata.setText(""+user.get(position).getLat());
         holder.txt_longdata.setText(""+user.get(position).getLng());
         holder.txt_catdata.setText(user.get(position).getCategory());
