@@ -149,7 +149,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         }
 
                         if (!move) {
-                            displayAlert(MainActivity.this, "Please add a category for the new  note!");
+                            displayAlert(MainActivity.this, "Please add a category for the new note!");
                         } else {
                             intent = new Intent(MainActivity.this, WriteNoteActivity.class);
                             intent.putExtra("category", cattext);
