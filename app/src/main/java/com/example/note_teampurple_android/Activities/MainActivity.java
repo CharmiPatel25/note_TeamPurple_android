@@ -308,5 +308,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }, 3 * 1000);
         }
     }
+    public void attachswipelistener() {
+        navigationAdapter = new NavigationAdapter(MainActivity.this, categoryarray, user);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(navigationAdapter);
 
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT | ItemTouchHelper.DOWN | ItemTouchHelper.UP) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                Toast.makeText(MainActivity.this, "on Move", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                Toast.makeText(MainActivity.this, "on Swiped ", Toast.LENGTH_SHORT).show();
+                //Remove swiped item from list and notify the RecyclerView
+                int position = viewHolder.getAdapterPosition();
+                // arrayList.remove(position);
+                // Toast.makeText(MainActivity.this, "on Move", Toast.LENGTH_SHORT).show();
+                // navigationAdapter.notifyDataSetChanged();
+                //deletenote(user.get(viewHolder.getAdapterPosition()), true);
+                navigationAdapter.notifyDataSetChanged();
+            }
+        };
+
+        itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+    }
 }
