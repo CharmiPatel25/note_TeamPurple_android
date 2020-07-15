@@ -22,6 +22,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,6 +47,8 @@ import butterknife.ButterKnife;
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 import io.opencensus.stats.ViewData;
+
+import static com.example.note_teampurple_android.Adapter.NavigationAdapter.recposition;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -252,6 +256,40 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         String formattedDate = df.format(c);
         System.out.println("  "+formattedDate);
         return formattedDate;
+    }
+
+    public void setreccolor(int position, String s) {
+        drawer.closeDrawers();
+        notesarray = new ArrayList<UserData>();
+        cattitle = position;
+        cattext = s;
+        recposition(position);
+        navigationAdapter.notifyDataSetChanged();
+        txtHometitle.setText(cattext);
+
+        for (int i = 0; i < user.size(); i++) {
+            if (user.get(i).getCategory().equals(s)) {
+                if (user.get(i).getTitle() == null || user.get(i).getTitle().isEmpty() || user.get(i).getTitle().equals("")) {
+
+                } else {
+                    notesarray.add(user.get(i));
+                }
+            }
+        }
+
+        if (notesarray.isEmpty()) {
+            llEmptynote.setVisibility(View.VISIBLE);
+            myRecyclerView.setVisibility(View.GONE);
+        } else {
+            llEmptynote.setVisibility(View.GONE);
+            myRecyclerView.setVisibility(View.VISIBLE);
+            homeAdapter = new HomeAdapter(MainActivity.this, cattitle, notesarray);
+            layoutManager = new LinearLayoutManager(MainActivity.this);
+            myRecyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
+            myRecyclerView.setHasFixedSize(true);
+            myRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            myRecyclerView.setAdapter(homeAdapter);
+        }
     }
 
 }
