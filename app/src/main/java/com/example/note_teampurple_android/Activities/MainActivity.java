@@ -331,12 +331,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 // arrayList.remove(position);
                 // Toast.makeText(MainActivity.this, "on Move", Toast.LENGTH_SHORT).show();
                 // navigationAdapter.notifyDataSetChanged();
-                //deletenote(user.get(viewHolder.getAdapterPosition()), true);
+                deletenote(user.get(viewHolder.getAdapterPosition()), true);
                 navigationAdapter.notifyDataSetChanged();
             }
         };
 
         itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
+    }
+
+    private void deletenote(final UserData userData,final boolean b) {
     }
 }
