@@ -341,5 +341,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void deletenote(final UserData userData,final boolean b) {
+        dialog.setContentView(R.layout.delete_note_layout);
     }
 }
