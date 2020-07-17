@@ -40,6 +40,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -203,10 +204,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 sort();
                 break;
         }
-    }
-
-    private void sort() {
-
     }
 
     public void showdialog() {
@@ -411,4 +408,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //homeAdapter = new HomeAdapter(MainActivity.this, cattitle, filterdata);
         //my_recycler_view.setAdapter(homeAdapter);
     }
-}
+    private void sort() {
+        //new array list that will hold the filtered data
+        ArrayList<UserData> filterdata = new ArrayList<>();
+        ArrayList<String> textarray = new ArrayList<>();
+
+        for (int i = 0; i < notesarray.size(); i++) {
+            //if the existing elements contains the search input
+            textarray.add(notesarray.get(i).getTitle());
+        }
+
+        if(sortting)
+        {
+            Collections.sort(textarray, Collections.reverseOrder());
+            sortting=false;
+        }
+        else
+        {
+            Collections.sort(textarray);
+            sortting=true;
+        }
+
+    }
