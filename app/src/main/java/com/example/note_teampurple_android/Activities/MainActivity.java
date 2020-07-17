@@ -163,7 +163,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         return true;
 
 
-                    case R.id.faboptions_deletedata:
+                  /*  case R.id.faboptions_deletedata:
                         //Toast.makeText(MainActivity.this, "Clean Database", Toast.LENGTH_LONG).show();
                         //  deletedata();
                         break;
@@ -176,7 +176,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                     case R.id.faboptions_setting:
                         Toast.makeText(MainActivity.this, "setting note", Toast.LENGTH_LONG).show();
-                        break;
+                        break; */
                 }
                 return false;
             }

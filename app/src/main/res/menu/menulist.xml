@@ -5,19 +5,4 @@
         android:icon="@android:drawable/ic_menu_add"
         android:title="Add new note" />
 
-    <item
-        android:id="@+id/faboptions_deletedata"
-        android:icon="@android:drawable/ic_delete"
-        android:title="Delete database" />
-
-    <item
-        android:id="@+id/faboptions_viewdatabase"
-        android:icon="@android:drawable/ic_menu_view"
-        android:title="View Databse" />
-
-
-    <item
-        android:id="@+id/faboptions_setting"
-        android:icon="@drawable/setting"
-        android:title="Setting" />
 </menu>
