@@ -452,13 +452,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         but_move = dialog.findViewById(R.id.but_move);
         Button but_cancel_move = dialog.findViewById(R.id.but_cancel_move);
 
-        /*defaultposition=-1;
-        MoveAdapter moveAdapter = new MoveAdapter(MainActivity.this, categoryarray, user, defaultposition);
-        layoutManager = new LinearLayoutManager(MainActivity.this);
-        rec_move.setLayoutManager(layoutManager);
-        rec_move.setHasFixedSize(true);
-        rec_move.setItemAnimator(new DefaultItemAnimator());
-        rec_move.setAdapter(moveAdapter);*/
 
         but_move.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -499,12 +492,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         defaultposition = position;
         but_move.setVisibility(View.VISIBLE);
 
-        /*MoveAdapter moveAdapter = new MoveAdapter(MainActivity.this, categoryarray, user, defaultposition);
-        layoutManager = new LinearLayoutManager(MainActivity.this);
-        rec_move.setLayoutManager(layoutManager);
-        rec_move.setHasFixedSize(true);
-        rec_move.setItemAnimator(new DefaultItemAnimator());
-        rec_move.setAdapter(moveAdapter);*/
     }
     public void movedialog(final UserData userData, final boolean b)
     {
