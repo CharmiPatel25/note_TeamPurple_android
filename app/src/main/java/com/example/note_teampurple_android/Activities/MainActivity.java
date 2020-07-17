@@ -512,5 +512,31 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Button but_movdel = dialog.findViewById(R.id.but_movdel);
         Button but_movmov = dialog.findViewById(R.id.but_movmov);
         ImageView img_move_delete = dialog.findViewById(R.id.img_move_delete);
+
+        but_movdel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                dialog.cancel();
+                deletenote(userData,b);
+            }
+        });
+        but_movmov.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.cancel();
+                optiondialog(userData);
+
+            }
+        });
+        img_move_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.cancel();
+            }
+        });
+        dialog.show();
     }
 }
