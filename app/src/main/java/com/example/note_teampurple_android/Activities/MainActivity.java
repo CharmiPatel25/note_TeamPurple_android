@@ -30,6 +30,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.note_teampurple_android.Adapter.HomeAdapter;
+import com.example.note_teampurple_android.Adapter.MoveAdapter;
 import com.example.note_teampurple_android.Adapter.NavigationAdapter;
 import com.example.note_teampurple_android.R;
 import com.example.note_teampurple_android.database.AppDatabase;
@@ -450,5 +451,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         rec_move = dialog.findViewById(R.id.rec_move);
         but_move = dialog.findViewById(R.id.but_move);
         Button but_cancel_move = dialog.findViewById(R.id.but_cancel_move);
+
+        defaultposition=-1;
+        MoveAdapter moveAdapter = new MoveAdapter(MainActivity.this, categoryarray, user, defaultposition);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        rec_move.setLayoutManager(layoutManager);
+        rec_move.setHasFixedSize(true);
+        rec_move.setItemAnimator(new DefaultItemAnimator());
+        rec_move.setAdapter(moveAdapter);
     }
 }
