@@ -67,7 +67,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@color/red"
                     android:fontFamily="@font/light"
-                    android:text="Ok"
+                    android:text="yes"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="12dp" />
@@ -78,7 +78,7 @@
                     android:layout_height="40dp"
                     android:background="@color/mustuard"
                     android:fontFamily="@font/light"
-                    android:text="cancel"
+                    android:text="no"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="12dp" />
