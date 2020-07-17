@@ -182,10 +182,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    private void filter(String toString) {
-
-    }
-
     private void displayAlert(MainActivity mainActivity, String s) {
 
     }
@@ -396,5 +392,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
         dialog.show();
+    }
+    private void filter(String text) {
+        //new array list that will hold the filtered data
+        ArrayList<UserData> filterdata = new ArrayList<>();
     }
 }
