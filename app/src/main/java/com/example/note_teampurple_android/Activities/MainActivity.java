@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     ArrayList<UserData> categoryarray;
     ArrayList<String> catcompare;
     ItemTouchHelper itemTouchHelper;
-    int defaultposition=-1;
+    int defaultposition = -1;
 
 
     @Override
@@ -245,13 +245,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    public String getcurrentdate()
-    {
+    public String getcurrentdate() {
         Date c = Calendar.getInstance().getTime();
         System.out.println("Current time => " + c);
         SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy");
         String formattedDate = df.format(c);
-        System.out.println("  "+formattedDate);
+        System.out.println("  " + formattedDate);
         return formattedDate;
     }
 
@@ -288,6 +287,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             myRecyclerView.setAdapter(homeAdapter);
         }
     }
+
     @Override
     public void onBackPressed() {
         if (exit) {
@@ -304,6 +304,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }, 3 * 1000);
         }
     }
+
     public void attachswipelistener() {
         navigationAdapter = new NavigationAdapter(MainActivity.this, categoryarray, user);
         layoutManager = new LinearLayoutManager(MainActivity.this);
@@ -336,7 +337,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
-    private void deletenote(final UserData userData,final boolean b) {
+    private void deletenote(final UserData userData, final boolean b) {
         dialog.setContentView(R.layout.delete_note_layout);
         Button deldata = dialog.findViewById(R.id.but_deldata);
         Button movedata = dialog.findViewById(R.id.but_move_data);
@@ -393,8 +394,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
         dialog.show();
     }
+
     private void filter(String text) {
         //new array list that will hold the filtered data
         ArrayList<UserData> filterdata = new ArrayList<>();
+
+        //looping through existing elements
+        for (int i = 0; i < notesarray.size(); i++) {
+            //if the existing elements contains the search input
+            if (notesarray.get(i).getSubtitle().toLowerCase().contains(text.toLowerCase()) || notesarray.get(i).getTitle().toLowerCase().contains(text.toLowerCase())) {
+                //adding the element to filtered list
+                filterdata.add(notesarray.get(i));
+            }
+        }
+        //calling a method of the adapter class and passing the filtered list
+        //homeAdapter = new HomeAdapter(MainActivity.this, cattitle, filterdata);
+        //my_recycler_view.setAdapter(homeAdapter);
     }
 }

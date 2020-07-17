@@ -135,4 +135,7 @@ public class UserData implements Parcelable
     }
 
 
+    public String getSubtitle() {
+        return null;
+    }
 }
