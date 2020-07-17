@@ -78,7 +78,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text="No category found!"
             android:textSize="15sp"
             android:fontFamily="@font/regular"
