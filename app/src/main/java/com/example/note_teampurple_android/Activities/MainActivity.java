@@ -193,9 +193,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    private void displayAlert(MainActivity mainActivity, String s) {
 
-    }
 
     private void retrieveTasks() {
 
@@ -574,6 +572,42 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 dialog.cancel();
             }
         });
+        dialog.show();
+    }
+
+    public void deletedata() {
+
+        dialog.setContentView(R.layout.delete_data_layout);
+        Button deldata = dialog.findViewById(R.id.but_deldatabase);
+
+        deldata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        user = mDb.noteDao().loadAllPersons();
+
+                        for (int i = 0; i < user.size(); i++) {
+                            mDb.noteDao().delete(user.get(i));
+                        }
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity.this, "total size = " + user.size(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                        System.out.println("total size = " + user.size());
+                    }
+                });
+            }
+        });
+
         dialog.show();
     }
 }
