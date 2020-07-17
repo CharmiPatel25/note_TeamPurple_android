@@ -181,6 +181,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
 
         retrieveTasks();
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout_doctor);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view_doctor);
+        addcategory = navigationView.findViewById(R.id.but_add_cat);
+        recyclerView = navigationView.findViewById(R.id.rec_category);
+        addcategory.setOnClickListener(this);
 
     }
 
@@ -240,7 +249,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void addcategory() {
+        catcompare = new ArrayList<String>();
+        categoryarray = new ArrayList<UserData>();
+        for (int y = 0; y < user.size(); y++) {
+            if (!catcompare.contains(user.get(y).getCategory())) {
+                categoryarray.add(user.get(y));
+                catcompare.add(user.get(y).getCategory());
+            }
+        }
 
+
+        if (categorytext.getText().toString().isEmpty() || categorytext.getText().toString().equals("")) {
+            displayAlert(MainActivity.this, "Please enter the category for the note.");
+        } else {
+            if (catcompare.contains(categorytext.getText().toString())) {
+                displayAlert(MainActivity.this, "Category already exist !");
+            } else {
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        userData.setCategory(categorytext.getText().toString());
+                        userData.setDatedata(""+getcurrentdate());
+                        mDb.noteDao().insertPerson(userData);
+
+                        retrieveTasks();
+                    }
+                });
+            }
+        }
     }
 
     public String getcurrentdate() {
@@ -452,6 +489,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         but_move = dialog.findViewById(R.id.but_move);
         Button but_cancel_move = dialog.findViewById(R.id.but_cancel_move);
 
+        defaultposition=-1;
+        MoveAdapter moveAdapter = new MoveAdapter(MainActivity.this, categoryarray, user, defaultposition);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        rec_move.setLayoutManager(layoutManager);
+        rec_move.setHasFixedSize(true);
+        rec_move.setItemAnimator(new DefaultItemAnimator());
+        rec_move.setAdapter(moveAdapter);
 
         but_move.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -491,6 +535,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         movetext = toString;
         defaultposition = position;
         but_move.setVisibility(View.VISIBLE);
+        MoveAdapter moveAdapter = new MoveAdapter(MainActivity.this, categoryarray, user, defaultposition);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        rec_move.setLayoutManager(layoutManager);
+        rec_move.setHasFixedSize(true);
+        rec_move.setItemAnimator(new DefaultItemAnimator());
+        rec_move.setAdapter(moveAdapter);
 
     }
     public void movedialog(final UserData userData, final boolean b)
