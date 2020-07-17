@@ -37,11 +37,6 @@
                     android:textSize="14sp"
                     android:fontFamily="@font/light"/>
 
-                <ImageView
-                    android:src="@drawable/cloud"
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"/>
-
             </LinearLayout>
 
             <TextView
