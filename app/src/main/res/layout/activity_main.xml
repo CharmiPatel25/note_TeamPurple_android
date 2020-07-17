@@ -52,7 +52,7 @@
             android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="search note"
+            android:hint="Search Note"
             android:textColor="@color/black"
             android:textColorHint="@color/white"
             android:fontFamily="@font/regular"
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:textColor="@color/black"
                 android:text="No notes found !"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/regular"
                 android:layout_height="wrap_content" />
 
@@ -107,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:textColor="@color/black"
                 android:text="Click + to add new note"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/bold"
                 android:layout_height="wrap_content" />
 
