@@ -493,4 +493,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
         dialog.show();
     }
+    public void movenote(int position, String toString) {
+
+        movetext = toString;
+        defaultposition = position;
+        but_move.setVisibility(View.VISIBLE);
+
+        /*MoveAdapter moveAdapter = new MoveAdapter(MainActivity.this, categoryarray, user, defaultposition);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        rec_move.setLayoutManager(layoutManager);
+        rec_move.setHasFixedSize(true);
+        rec_move.setItemAnimator(new DefaultItemAnimator());
+        rec_move.setAdapter(moveAdapter);*/
+    }
 }
