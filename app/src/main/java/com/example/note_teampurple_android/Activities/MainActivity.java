@@ -444,4 +444,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         homeAdapter = new HomeAdapter(MainActivity.this, cattitle, filterdata);
         myRecyclerView.setAdapter(homeAdapter);
     }
+
+    public void optiondialog(final UserData userData) {
+        dialog.setContentView(R.layout.add_optional_layout);
+        rec_move = dialog.findViewById(R.id.rec_move);
+        but_move = dialog.findViewById(R.id.but_move);
+        Button but_cancel_move = dialog.findViewById(R.id.but_cancel_move);
+    }
 }
