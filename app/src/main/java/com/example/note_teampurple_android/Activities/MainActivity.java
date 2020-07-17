@@ -183,7 +183,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
 
         retrieveTasks();
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout_doctor);
+        drawer = findViewById(R.id.drawer_layout_doctor);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -499,7 +499,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 dialog.cancel();
-                //optiondialog(userData);
+                optiondialog(userData);
             }
         });
         dialog.show();
@@ -518,7 +518,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         }
         //calling a method of the adapter class and passing the filtered list
-        //homeAdapter = new HomeAdapter(MainActivity.this, cattitle, filterdata);
+        homeAdapter = new HomeAdapter(MainActivity.this, cattitle, filterdata);
         myRecyclerView.setAdapter(homeAdapter);
     }
     private void sort() {
