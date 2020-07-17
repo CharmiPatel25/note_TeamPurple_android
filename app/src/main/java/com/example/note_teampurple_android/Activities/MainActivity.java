@@ -406,7 +406,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
         //calling a method of the adapter class and passing the filtered list
         //homeAdapter = new HomeAdapter(MainActivity.this, cattitle, filterdata);
-        //my_recycler_view.setAdapter(homeAdapter);
+        myRecyclerView.setAdapter(homeAdapter);
     }
     private void sort() {
         //new array list that will hold the filtered data
@@ -428,5 +428,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             Collections.sort(textarray);
             sortting=true;
         }
+        System.out.println("++++++++"+textarray);
 
+        for (int y = 0; y < textarray.size(); y++) {
+
+            for (int z = 0; z < notesarray.size(); z++) {
+
+                if (textarray.get(y)== notesarray.get(z).getTitle()) {
+
+                    filterdata.add(notesarray.get(z));
+                }
+            }
+        }
+        //calling a method of the adapter class and passing the filtered list
+        homeAdapter = new HomeAdapter(MainActivity.this, cattitle, filterdata);
+        myRecyclerView.setAdapter(homeAdapter);
     }
+}
