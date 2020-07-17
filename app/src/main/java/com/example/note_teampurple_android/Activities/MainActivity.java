@@ -349,10 +349,52 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         if (b) {
             txtalert.setText("are you sure to delete category and its notes?");
-        }
-        else
-        {
+        } else {
             txtalert.setText("are you sure to delete this notes?");
         }
+
+        deldata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (b) {
+                            for (int i = 0; i < user.size(); i++) {
+                                String cat = userData.getCategory();
+                                if (cat.equals(user.get(i).getCategory())) {
+                                    mDb.noteDao().delete(user.get(i));
+                                }
+                            }
+                        } else {
+                            mDb.noteDao().delete(userData);
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // homeAdapter.notifyDataSetChanged();
+                                dialog.cancel();
+                                retrieveTasks();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.cancel();
+            }
+        });
+        movedata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+                //optiondialog(userData);
+            }
+        });
+        dialog.show();
     }
 }
