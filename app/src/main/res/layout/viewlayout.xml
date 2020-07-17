@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:elevation="40dp"
         android:layout_margin="5dp"
-        card_view:cardBackgroundColor="@color/purple_bg_light"
+        card_view:cardBackgroundColor="@color/background"
         card_view:cardCornerRadius="10dp">
 
         <LinearLayout
@@ -30,7 +30,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:textColor="@color/green_active"
+                    android:textColor="@color/colorAccent"
                     android:text="id = "
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -59,7 +59,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:textColor="@color/blue_active"
+                    android:textColor="@color/colorAccent"
                     android:text="Title = "
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -89,7 +89,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:textColor="@color/green_active"
+                    android:textColor="@color/colorAccent"
                     android:text="Text = "
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -150,7 +150,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:textColor="@color/green_active"
+                    android:textColor="@color/colorAccent"
                     android:text="Audio data = "
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -181,7 +181,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:textColor="@color/green_active"
+                    android:textColor="@color/colorAccent"
                     android:text="Image data = "
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -213,7 +213,7 @@
                 <TextView
 
                     android:layout_width="wrap_content"
-                    android:textColor="@color/green_active"
+                    android:textColor="@color/colorAccent"
                     android:text="Latitiude = "
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -243,7 +243,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:textColor="@color/green_active"
+                    android:textColor="@color/colorAccent"
                     android:text="Longitude = "
                     android:textStyle="bold"
                     android:textSize="14sp"
