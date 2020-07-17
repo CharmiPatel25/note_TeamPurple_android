@@ -38,7 +38,8 @@ public class NavigationAdapter extends RecyclerView.Adapter<com.example.note_tea
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.categorylayout, parent, false);
+        return new com.example.note_teampurple_android.Adapter.NavigationAdapter.MyViewHolder(itemView);
     }
 
     @SuppressLint("ResourceAsColor")
