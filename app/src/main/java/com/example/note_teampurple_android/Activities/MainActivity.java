@@ -452,5 +452,45 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         but_move = dialog.findViewById(R.id.but_move);
         Button but_cancel_move = dialog.findViewById(R.id.but_cancel_move);
 
+        /*defaultposition=-1;
+        MoveAdapter moveAdapter = new MoveAdapter(MainActivity.this, categoryarray, user, defaultposition);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        rec_move.setLayoutManager(layoutManager);
+        rec_move.setHasFixedSize(true);
+        rec_move.setItemAnimator(new DefaultItemAnimator());
+        rec_move.setAdapter(moveAdapter);*/
+
+        but_move.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        userData.setCategory(movetext);
+                        mDb.noteDao().updatePerson(userData);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // homeAdapter.notifyDataSetChanged();
+                                dialog.cancel();
+                                //  retrieveTasks();
+                                setreccolor(cattitle, cattext);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        but_cancel_move.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.cancel();
+            }
+        });
+        dialog.show();
     }
 }
