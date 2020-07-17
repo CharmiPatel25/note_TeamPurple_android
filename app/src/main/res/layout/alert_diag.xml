@@ -53,7 +53,8 @@
                     android:layout_width="170dp"
                     android:text="Done"
                     android:textAllCaps="false"
-                    android:textSize="12dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:fontFamily="@font/light"
                     android:textColor="@color/white"
                     android:layout_height="40dp" />
