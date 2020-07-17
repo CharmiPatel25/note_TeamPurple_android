@@ -84,6 +84,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     RecyclerView myRecyclerView;
     @BindView(R.id.fab_add)
     FabSpeedDial fabAdd;
+    @BindView(R.id.ll_emptycat)
+    LinearLayout ll_emptycat;
 
     static int cattitle = 0;
     String cattext = "";
@@ -196,7 +198,82 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     private void retrieveTasks() {
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                user = mDb.noteDao().loadAllPersons();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
 
+                        notesarray = new ArrayList<UserData>();
+                        catcompare = new ArrayList<String>();
+                        categoryarray = new ArrayList<UserData>();
+
+                        try {
+                            cattext = user.get(cattitle).getCategory();
+                        } catch (Exception e) {
+                            cattext = "";
+                        }
+
+
+                        if (user.size() > 0) {
+                            ll_emptycat.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
+
+                            for (int y = 0; y < user.size(); y++) {
+                                if (!catcompare.contains(user.get(y).getCategory())) {
+                                    categoryarray.add(user.get(y));
+                                    catcompare.add(user.get(y).getCategory());
+                                }
+                            }
+
+                            attachswipelistener();
+
+                            try {
+
+                                txtHometitle.setText(user.get(cattitle).getCategory());
+                            } catch (Exception e) {
+                                txtHometitle.setText("Notes");
+                            }
+
+
+                            for (int i = 0; i < user.size(); i++) {
+                                if (user.get(cattitle).getCategory().equals(user.get(i).getCategory())) {
+                                    if (user.get(i).getTitle() == null || user.get(i).getTitle().isEmpty() || user.get(i).getTitle().equals("")) {
+
+                                    } else {
+                                        notesarray.add(user.get(i));
+                                    }
+                                }
+                            }
+
+                            if (notesarray.isEmpty()) {
+                                llEmptynote.setVisibility(View.VISIBLE);
+                                myRecyclerView.setVisibility(View.GONE);
+                            } else {
+                                llEmptynote.setVisibility(View.GONE);
+                                myRecyclerView.setVisibility(View.VISIBLE);
+                                homeAdapter = new HomeAdapter(MainActivity.this, cattitle, notesarray);
+                                layoutManager = new LinearLayoutManager(MainActivity.this);
+                                myRecyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
+                                myRecyclerView.setHasFixedSize(true);
+                                myRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                                myRecyclerView.setAdapter(homeAdapter);
+                            }
+                        } else {
+                            ll_emptycat.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+
+                            llEmptynote.setVisibility(View.VISIBLE);
+                            myRecyclerView.setVisibility(View.GONE);
+
+                            attachswipelistener();
+                        }
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -541,8 +618,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         rec_move.setAdapter(moveAdapter);
 
     }
-    public void movedialog(final UserData userData, final boolean b)
-    {
+    public void movedialog(final UserData userData, final boolean b) {
         dialog.setContentView(R.layout.move_layout);
         Button but_movdel = dialog.findViewById(R.id.but_movdel);
         Button but_movmov = dialog.findViewById(R.id.but_movmov);
