@@ -506,4 +506,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         rec_move.setItemAnimator(new DefaultItemAnimator());
         rec_move.setAdapter(moveAdapter);*/
     }
+    public void movedialog(final UserData userData, final boolean b)
+    {
+        dialog.setContentView(R.layout.move_layout);
+        Button but_movdel = dialog.findViewById(R.id.but_movdel);
+        Button but_movmov = dialog.findViewById(R.id.but_movmov);
+        ImageView img_move_delete = dialog.findViewById(R.id.img_move_delete);
+    }
 }
