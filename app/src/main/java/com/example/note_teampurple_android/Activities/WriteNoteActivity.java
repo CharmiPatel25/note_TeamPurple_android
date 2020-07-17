@@ -149,8 +149,8 @@ public class WriteNoteActivity extends BaseActivity implements View.OnClickListe
     BubbleToggleView l_record_audio;
     @BindView(R.id.l_maplocation)
     BubbleToggleView l_maplocation;
-    @BindView(R.id.l_micnavigation)
-    BubbleToggleView l_micnavigation;
+//    @BindView(R.id.l_micnavigation)
+//    BubbleToggleView l_micnavigation;
     @BindView(R.id.l_savenote)
     BubbleToggleView l_savenote;
     @BindView(R.id.img_card)
@@ -371,22 +371,22 @@ public class WriteNoteActivity extends BaseActivity implements View.OnClickListe
             }
         });
 
-        l_micnavigation.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    micnote++;
-                    bubbleNavigationLinearView.setCurrentActiveItem(0);
-                    if (micnote > 1) {
-                        mic_layout.setVisibility(View.VISIBLE);
-                        speech.startListening(recognizerIntent);
-
-                    }
-                    return true;
-                }
-                return false;
-            }
-        });
+//        l_micnavigation.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (event.getAction() == MotionEvent.ACTION_UP) {
+//                    micnote++;
+//                    bubbleNavigationLinearView.setCurrentActiveItem(0);
+//                    if (micnote > 1) {
+//                        mic_layout.setVisibility(View.VISIBLE);
+//                        speech.startListening(recognizerIntent);
+//
+//                    }
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         speech = SpeechRecognizer.createSpeechRecognizer(this);
         speech.setRecognitionListener(WriteNoteActivity.this);
