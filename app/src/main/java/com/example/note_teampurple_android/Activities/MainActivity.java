@@ -342,6 +342,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void deletenote(final UserData userData,final boolean b) {
         dialog.setContentView(R.layout.delete_note_layout);
+        Button deldata = dialog.findViewById(R.id.but_deldata);
+        Button movedata = dialog.findViewById(R.id.but_move_data);
+        TextView txtalert = dialog.findViewById(R.id.text_dataalert);
+        Button cancel = dialog.findViewById(R.id.but_canceldata);
+
+        if (b) {
+            txtalert.setText("are you sure you want to delete category and its notes?");
+        }
 
     }
 }
