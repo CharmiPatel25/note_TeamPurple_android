@@ -49,7 +49,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/transition_background_drawable_default"
                 android:fontFamily="@font/regular"
-                android:hint="enter category"
+                android:hint="Enter Category"
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
@@ -77,7 +77,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="12dp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/but_add_cat"
@@ -90,11 +90,11 @@
                     android:layout_weight=".5"
                     android:background="@drawable/photos_background_stroke"
                     android:fontFamily="@font/light"
-                    android:text="+ Add category"
+                    android:text="+ Add Category"
                     android:textStyle="bold"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
-                    android:textSize="12dp" />
+                    android:textSize="16sp" />
 
 
             </LinearLayout>
