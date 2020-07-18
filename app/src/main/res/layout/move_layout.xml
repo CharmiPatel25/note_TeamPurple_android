@@ -11,7 +11,7 @@
         android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        card_view:cardBackgroundColor="@color/grey"
+        card_view:cardBackgroundColor="@color/blue_grey_inactive"
         card_view:cardCornerRadius="10dp">
 
 
@@ -53,23 +53,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="20dp"
-                        android:background="@color/red"
+                        android:background="@color/green_active"
                         android:fontFamily="@font/light"
                         android:text="Move"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="12dp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
 
                     <Button
                         android:id="@+id/but_movdel"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:background="@color/mustuard"
+                        android:background="@color/red_active"
                         android:fontFamily="@font/light"
                         android:text="Delete"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="12dp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
 
 
                 </LinearLayout>
