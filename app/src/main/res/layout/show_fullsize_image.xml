@@ -14,7 +14,7 @@
         android:layout_margin="10dp"
         android:layout_gravity="center"
         android:background="@color/cardcolor"
-        card_view:cardBackgroundColor="@color/grey"
+        card_view:cardBackgroundColor="@color/grey_active"
         card_view:cardCornerRadius="10dp">
 
 

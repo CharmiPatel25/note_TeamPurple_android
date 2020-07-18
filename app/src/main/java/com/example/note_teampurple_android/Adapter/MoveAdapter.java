@@ -66,14 +66,14 @@ public class MoveAdapter extends RecyclerView.Adapter<MoveAdapter.MyViewHolder>
         }
 
 
-        if(position == positioncolor)
-        {
-            holder.card_view_cat.setCardBackgroundColor(0xFF3D4552);
-        }
-        else
-        {
-            holder.card_view_cat.setCardBackgroundColor(0xFF232931);
-        }
+//        if(position == positioncolor)
+//        {
+//            holder.card_view_cat.setCardBackgroundColor(0xFF3D4552);
+//        }
+//        else
+//        {
+//            holder.card_view_cat.setCardBackgroundColor(0xFF232931);
+//        }
 
         holder.txt_notecount.setText(""+(count-1));
 

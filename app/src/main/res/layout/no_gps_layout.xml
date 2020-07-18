@@ -11,7 +11,7 @@
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="@color/lightgrey"
+        card_view:cardBackgroundColor="@color/grey_active"
         card_view:cardCornerRadius="10dp">
     <LinearLayout
         android:id="@+id/ll_dashtotal"
@@ -36,7 +36,7 @@
                 android:text="Alert"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
 
 
@@ -58,8 +58,8 @@
             android:layout_marginTop="15dp"
             android:fontFamily="@font/regular"
             android:gravity="center"
-            android:text="Please enabled your Gps network to continue!"
-            android:textColor="@color/white"
+            android:text="Please enable your GPS network to continue!"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
 
@@ -70,7 +70,7 @@
             android:layout_height="40dp"
             android:background="@drawable/bluecurve"
             android:stateListAnimator="@null"
-            android:text="Setting's"
+            android:text="Settings"
             android:textAllCaps="false"
             android:fontFamily="@font/regular"
             android:textColor="@color/white"

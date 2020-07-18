@@ -11,7 +11,7 @@
         android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        card_view:cardBackgroundColor="@color/navcolor"
+        card_view:cardBackgroundColor="@color/grey_active"
         card_view:cardCornerRadius="10dp">
 
 
@@ -37,8 +37,9 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Select"
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -56,9 +57,10 @@
                     android:id="@+id/but_move"
                     android:layout_width="match_parent"
                     android:text="Move"
-                    android:background="@color/greytone"
+                    android:background="@color/green_active"
                     android:textAllCaps="false"
-                    android:textSize="12dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:fontFamily="@font/light"
                     android:textColor="@color/white"
                     android:layout_height="40dp" />
@@ -67,12 +69,13 @@
                     android:id="@+id/but_cancel_move"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@color/mustuard"
+                    android:background="@color/color4"
                     android:fontFamily="@font/light"
                     android:text="Cancel"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="12dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
 
             </LinearLayout>
