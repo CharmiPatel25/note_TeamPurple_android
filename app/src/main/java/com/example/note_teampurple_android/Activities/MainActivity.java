@@ -455,9 +455,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Button cancel = dialog.findViewById(R.id.but_canceldata);
 
         if (b) {
-            txtalert.setText("are you sure to delete category and its notes?");
+            txtalert.setText("Are you sure you want to delete category and its notes?");
         } else {
-            txtalert.setText("are you sure to delete this notes?");
+            txtalert.setText("Are you sure you want to delete this note?");
         }
 
         deldata.setOnClickListener(new View.OnClickListener() {
