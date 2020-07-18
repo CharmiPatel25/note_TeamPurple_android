@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:elevation="40dp"
         android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="@color/gifcolor"
+        card_view:cardBackgroundColor="@color/grey_active"
         card_view:cardCornerRadius="10dp">
 
         <LinearLayout
@@ -35,9 +35,10 @@
                     android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textSize="15dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:layout_marginLeft="20dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/regular"
                     android:text="Record Audio"/>
 
@@ -71,19 +72,20 @@
 
 
                 <TextView
-                    android:textSize="17dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="00:29"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:id="@+id/txt_time" />
 
 
                 <SeekBar
                     android:id="@+id/seekBar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:outlineSpotShadowColor="@color/red"/>
 
 
 
@@ -131,9 +133,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/regular"
-                    android:textSize="30dp" />
+                    android:textSize="30sp" />
 
 
 
@@ -169,7 +171,7 @@
                     android:id="@+id/but_submit_audio"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:background="@color/cardcolor"
+                    android:background="@color/green_active"
                     android:gravity="center"
                     android:weightSum="1">
 
@@ -180,7 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Submit"
-                        android:textSize="17dp" />
+                        android:textSize="17sp" />
 
 
                 </LinearLayout>
@@ -190,7 +192,7 @@
                     android:id="@+id/but_reset"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:background="@color/transgrey"
+                    android:background="@color/red_active"
                     android:gravity="center"
                     android:weightSum="1">
 
@@ -201,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:text="Reset"
                         android:textColor="@color/white"
-                        android:textSize="17dp" />
+                        android:textSize="17sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
