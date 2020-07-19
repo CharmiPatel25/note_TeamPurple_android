@@ -59,7 +59,5 @@ public class BaseActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public void movedialog(UserData userData, boolean b) {
 
-    }
 }

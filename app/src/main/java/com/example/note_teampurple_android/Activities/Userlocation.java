@@ -53,7 +53,7 @@ public class Userlocation extends FragmentActivity implements OnMapReadyCallback
     @BindView(R.id.img_nav)
     ImageView img_nav;
 
-    Intent intent ;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +63,8 @@ public class Userlocation extends FragmentActivity implements OnMapReadyCallback
         ButterKnife.bind(this);
         img_nav.setOnClickListener(this);
         intent = getIntent();
-        savedlat = intent.getDoubleExtra("savedlat",0);
-        savedlong = intent.getDoubleExtra("savedlong",0);
+        savedlat = intent.getDoubleExtra("savedlat", 0);
+        savedlong = intent.getDoubleExtra("savedlong", 0);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLocation();
@@ -96,9 +96,18 @@ public class Userlocation extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap)
-    {
+    public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         mMap.setMyLocationEnabled(true);
         LatLng latLng;
 

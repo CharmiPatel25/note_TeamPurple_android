@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -184,6 +185,7 @@ public class WriteNoteActivity extends BaseActivity implements View.OnClickListe
     private SharedPreferences permissionStatus;
     private boolean sentToSettings = false;
 
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -465,7 +467,7 @@ public class WriteNoteActivity extends BaseActivity implements View.OnClickListe
         try {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             photoFile = getPhotoFileUri();
-            mediaUri = FileProvider.getUriForFile(WriteNoteActivity.this, "com.firenote.provider", photoFile);
+            mediaUri = FileProvider.getUriForFile(WriteNoteActivity.this, "com.note_teampurple_android.provider", photoFile);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mediaUri);
 
             if (intent.resolveActivity(WriteNoteActivity.this.getPackageManager()) != null) {
@@ -1178,7 +1180,7 @@ public class WriteNoteActivity extends BaseActivity implements View.OnClickListe
         if (speech != null) {
             speech.destroy();
             Log.i(LOG_TAG, "destroy");
-            Toast.makeText(WriteNoteActivity.this, "destroy", Toast.LENGTH_LONG).show();
+          Toast.makeText(WriteNoteActivity.this, "", Toast.LENGTH_LONG).show();
         }
 
     }
