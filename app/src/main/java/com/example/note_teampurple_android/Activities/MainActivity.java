@@ -512,7 +512,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //looping through existing elements
         for (int i = 0; i < notesarray.size(); i++) {
             //if the existing elements contains the search input
-            if (notesarray.get(i).getSubtitle().toLowerCase().contains(text.toLowerCase()) || notesarray.get(i).getTitle().toLowerCase().contains(text.toLowerCase())) {
+            if (notesarray.get(i).getTitle().toLowerCase().contains(text.toLowerCase()) || notesarray.get(i).getTitle().toLowerCase().contains(text.toLowerCase())) {
                 //adding the element to filtered list
                 filterdata.add(notesarray.get(i));
             }
